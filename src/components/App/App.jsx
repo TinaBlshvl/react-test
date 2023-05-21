@@ -1,6 +1,6 @@
 import css from '../App/App.module.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from 'redux/operations';
 import { loading, selectUsers } from 'redux/selectors';
@@ -11,9 +11,6 @@ import { Item } from '../Item/Item';
 import { List } from '../List/List.styled';
 
 export const App = () => {
-  const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-
   const items = useSelector(selectUsers);
   const isLoading = useSelector(loading);
   const dispatch = useDispatch();
@@ -21,10 +18,6 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-
-  const loadMore = page => {
-    setPage(page);
-  };
 
   return (
     <div className={css.container}>
@@ -36,7 +29,7 @@ export const App = () => {
         </List>
       )}
       {isLoading && <Loader />}
-      <Button value={search} loadMore={loadMore} numberPage={page} />
+      <Button />
     </div>
   );
 };
