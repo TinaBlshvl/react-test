@@ -10,7 +10,8 @@ export const Item = ({ params, id }) => {
   const dispatch = useDispatch();
 
   const onClick = e => {
-    console.log('e', e);
+    e.preventDefault();
+
     if (e.target.name === params.user) {
       if (!params.following) {
         params.following = true;
@@ -30,7 +31,6 @@ export const Item = ({ params, id }) => {
       <img className={css.img} src={title} alt="main-img" />
 
       <div className={css.imgContainer}>
-        <h2 className={css.name}>{user}</h2>
         <img className={css.avatar} src={avatar} alt="user-avatar" />
       </div>
       <div className={css.userContainer}>
