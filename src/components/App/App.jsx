@@ -1,9 +1,11 @@
 import css from '../App/App.module.css';
 
+import { setPage } from 'redux/slice';
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from 'redux/operations';
-import { loading, selectUsers } from 'redux/selectors';
+import { selectLoading, selectUsers, selectPage } from 'redux/selectors';
 
 import { Button } from '../LoadMore/LoadMore';
 import { Loader } from '../Loader/Loader';
@@ -12,8 +14,13 @@ import { List } from '../List/List.styled';
 
 export const App = () => {
   const items = useSelector(selectUsers);
-  const isLoading = useSelector(loading);
+  const isLoading = useSelector(selectLoading);
   const dispatch = useDispatch();
+  const currentPage = useSelector(selectPage);
+
+  const handleLoadMore = () => {
+    dispatch(setPage(currentPage + 1));
+  };
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -29,7 +36,9 @@ export const App = () => {
         </List>
       )}
       {isLoading && <Loader />}
-      <Button />
+      <Button type="button" className="baseBtn" onClick={handleLoadMore}>
+        Load more
+      </Button>
     </div>
   );
 };

@@ -1,2 +1,3 @@
+export const selectPage = state => state.usersData.currentPage;
 export const selectUsers = state => state.usersData.users;
-export const loading = state => state.usersData.isLoading;
+export const selectLoading = state => state.usersData.isLoading;

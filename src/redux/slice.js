@@ -14,8 +14,8 @@ const usersSlice = createSlice({
   initialState,
 
   reducers: {
-    handleFilter: (state, { payload }) => {
-      state.filter = payload;
+    setPage: (state, action) => {
+      state.currentPage = action.payload;
     },
   },
 
@@ -56,3 +56,4 @@ function rejectHandler(state, action) {
 }
 
 export const usersReducer = usersSlice.reducer;
+export const { setPage } = usersSlice.actions;
