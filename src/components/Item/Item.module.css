@@ -119,6 +119,7 @@
   /* background-color: p => (p.following ? '#5CD3A8': '#ebd8ff'); */
 }
 
-.btn:focus {
+.btn:focus,
+.btn:hover {
   background-color: #5cd3a8;
 }
