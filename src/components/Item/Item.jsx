@@ -3,6 +3,8 @@ import css from '../Item/Item.module.css';
 import { ReactComponent as Logo } from 'images/logo.svg';
 import title from 'images/title.svg';
 
+import { Button } from '../Item/Item.styled.js';
+
 import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/operations';
 
@@ -43,7 +45,7 @@ export const Item = ({ params, id }) => {
         </p>
       </div>
 
-      <button
+      <Button
         className={css.btn}
         following={following}
         name={user}
@@ -51,7 +53,7 @@ export const Item = ({ params, id }) => {
         onClick={e => onClick(e)}
       >
         {following ? 'Following' : 'Follow'}
-      </button>
+      </Button>
     </li>
   );
 };
